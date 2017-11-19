@@ -1,0 +1,41 @@
+# Specific files and folders
+_Binary/*d.exe
+_Binary/*d.ini
+Z_DELETE
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Visual Studio specifics
+*.suo
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Executables
+*.out
+*.app
+*.sdf
+*.opensdf
+
+# Interpreter
+*.stackdump
+*.opendb
+*.db
+.vs/
+_Binary/*_d.ini

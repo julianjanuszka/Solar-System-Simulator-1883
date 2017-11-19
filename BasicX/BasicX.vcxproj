@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\BasicX\BasicX.h" />
+    <ClInclude Include="..\include\BasicX\BasicXApplication.h" />
+    <ClInclude Include="..\include\BasicX\Camera\Camera.h" />
+    <ClInclude Include="..\include\BasicX\Camera\CameraManager.h" />
+    <ClInclude Include="..\include\BasicX\Light\Light.h" />
+    <ClInclude Include="..\include\BasicX\Light\LightManager.h" />
+    <ClInclude Include="..\include\BasicX\Materials\Material.h" />
+    <ClInclude Include="..\include\BasicX\Materials\MaterialManager.h" />
+    <ClInclude Include="..\include\BasicX\Materials\Texture.h" />
+    <ClInclude Include="..\include\BasicX\Materials\TextureManager.h" />
+    <ClInclude Include="..\include\BasicX\Mesh\Mesh.h" />
+    <ClInclude Include="..\include\BasicX\Mesh\MeshManager.h" />
+    <ClInclude Include="..\include\BasicX\Mesh\Text.h" />
+    <ClInclude Include="..\include\BasicX\System\Definitions.h" />
+    <ClInclude Include="..\include\BasicX\System\FileReader.h" />
+    <ClInclude Include="..\include\BasicX\System\Folder.h" />
+    <ClInclude Include="..\include\BasicX\System\GLSystem.h" />
+    <ClInclude Include="..\include\BasicX\System\Shader.h" />
+    <ClInclude Include="..\include\BasicX\System\ShaderCompiler.h" />
+    <ClInclude Include="..\include\BasicX\System\ShaderManager.h" />
+    <ClInclude Include="..\include\BasicX\System\SystemSingleton.h" />
+    <ClInclude Include="..\include\BasicX\System\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BasicXApplication.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="Folder.cpp" />
+    <ClCompile Include="GLSystem.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MaterialManager.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshManager.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderCompiler.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="SystemSingleton.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Simplex\Shaders\Basic.fs" />
+    <None Include="..\include\Simplex\Shaders\Basic.vs" />
+    <None Include="..\include\Simplex\Shaders\Simplex.fs" />
+    <None Include="..\include\Simplex\Shaders\Simplex.vs" />
+    <None Include="..\include\Simplex\Shaders\Skybox.fs" />
+    <None Include="..\include\Simplex\Shaders\Skybox.vs" />
+    <None Include="..\include\Simplex\Shaders\Text.fs" />
+    <None Include="..\include\Simplex\Shaders\Text.vs" />
+    <None Include="..\include\Simplex\Shaders\Wireframe.fs" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E745E25C-0143-42AC-A486-1395A4C972AE}</ProjectGuid>
+    <RootNamespace>BasicX</RootNamespace>
+    <ProjectName>BasicX</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Z_DELETE\</OutDir>
+    <IntDir>$(SolutionDir)Z_DELETE\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+    <ExecutablePath>$(SolutionDir)include\GL\bin;$(SolutionDir)include\FreeImage\bin;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\lib\vs2015\x86\debug;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(SolutionDir)include;$(SolutionDir)res;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\GL\lib;$(SolutionDir)include\FreeImage\lib;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\lib\vs2015\x86\debug;$(LibraryPath)</LibraryPath>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Z_DELETE\</OutDir>
+    <IntDir>$(SolutionDir)Z_DELETE\$(ProjectName)\$(Configuration)\</IntDir>
+    <ExecutablePath>$(SolutionDir)include\GL\bin;$(SolutionDir)include\FreeImage\bin;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\lib\vs2015\x86\release;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(SolutionDir)include;$(SolutionDir)res;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\GL\lib;$(SolutionDir)include\FreeImage\lib;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1.2\lib\vs2015\x86\release;$(LibraryPath)</LibraryPath>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EXP_STL;FBXSDK_SHARED;DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glu32.lib;glew32.lib;opengl32.lib;FreeImage.lib;libfbxsdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)_Binary"
+copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)include\BasicX\bin"
+copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)include\BasicX\lib"
+xcopy "$(SolutionDir)include\Simplex\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Command>
+      <Message>Copying files...</Message>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EXP_STL;FBXSDK_SHARED;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader />
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;glu32.lib;FreeImage.lib;libfbxsdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)_Binary"
+copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)include\BasicX\bin"
+copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)include\BasicX\lib"
+xcopy "$(SolutionDir)include\Simplex\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Command>
+      <Message>Copying files...</Message>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <Bscmake />
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
