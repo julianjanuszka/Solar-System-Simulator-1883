@@ -9,15 +9,16 @@ Date: 2017/06
 
 #include "ControllerConfiguration.h"
 #include "imgui\ImGuiObject.h"
-
+#include <vector>
 #include "MyRigidBody.h"
-
+#include<ctime>
 namespace Simplex
 {
 	//Adding Application to the Simplex namespace
 class Application
 {
-	
+public:
+	Model* Sun = nullptr;
 	Model* jupiter = nullptr;
 	Model* mercury = nullptr;
 	Model* earth = nullptr;
@@ -29,7 +30,11 @@ class Application
 	Model* m_pSteve = nullptr; //model to display
 
 	quaternion m_qCreeper; //quaternion for the creeper
-
+	std::vector<vector3> PlanetPos;
+	std::vector<vector3> PlanetVel;
+	std::vector<Model*> Planets;
+	std::vector<matrix4> Planetscales;
+	std::vector<matrix4> Planetmodelmatricies;
 	MyRigidBody* m_pCreeperRB = nullptr; //Rigid Body of the model
 	MyRigidBody* m_pSteveRB = nullptr; //Rigid Body of the model
 
