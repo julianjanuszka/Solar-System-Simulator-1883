@@ -1,0 +1,26 @@
+﻿  timer.cpp
+  Texture.cpp
+  Source.cpp
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(317): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(516): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(526): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(636): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(638): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(641): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(645): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(647): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\source.cpp(650): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Shader.cpp
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\shader.cpp(46): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+  Object.cpp
+  Model.cpp
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\model.cpp(105): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  engine.cpp
+  Camera.cpp
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\camera.cpp(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\camera.cpp(35): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\jcb5944\igmprofile\documents\simsim\dsa1 engine jason\dsa1 engine jason\camera.cpp(36): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  DSA1 ENGINE JASON.vcxproj -> Z:\IGMProfile\Documents\simsim\Debug\DSA1 ENGINE JASON.exe
+  DSA1 ENGINE JASON.vcxproj -> Z:\IGMProfile\Documents\simsim\Debug\DSA1 ENGINE JASON.pdb (Full PDB)
