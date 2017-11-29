@@ -10,7 +10,7 @@ void Application::InitVariables(void)
 
 	//Set the position and target of the camera
 	m_pCameraMngr->SetPositionTargetAndUp(
-		vector3(0.0f, 3.0f, 13.0f), //Position
+		vector3(0.0f, 3.0f, 30.0f), //Position
 		vector3(0.0f, 3.0f, 12.0f),	//Target
 		AXIS_Y);					//Up
 
@@ -21,8 +21,11 @@ void Application::InitVariables(void)
 	Sun->Load("Planets\\00_Sun.obj");
 	Planets.push_back(Sun);
 	Planetscales.push_back(glm::scale(1.0f, 1.0f, 1.0f) * 2.0f);
-	PlanetPos.push_back(vector3(-5.0f, 0.0f, 0.0f));
+	PlanetPos.push_back(vector3(-5.0f, 5.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(18.0f);
+	PlanetRadius.push_back(1);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[0])  * Planetscales[0]);
 	//planet 1
 	jupiter = new Model();
@@ -31,6 +34,9 @@ void Application::InitVariables(void)
 	Planetscales.push_back(glm::scale(3.0f, 3.0f, 3.0f) * 2.0f);
 	PlanetPos.push_back(vector3(0.0f, 0.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(7.0f);
+	PlanetRadius.push_back(3);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[1])  * Planetscales[0]);
 	//planet 2
 	mercury = new Model();
@@ -39,6 +45,9 @@ void Application::InitVariables(void)
 	Planetscales.push_back(glm::scale(0.5f, 0.5f, 0.5f) * 2.0f);
 	PlanetPos.push_back(vector3(4.0f, 0.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(2.0f);
+	PlanetRadius.push_back(.5);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[2])  * Planetscales[1]);
 	//planet 3
 	earth = new Model();
@@ -47,6 +56,9 @@ void Application::InitVariables(void)
 	Planetscales.push_back(glm::scale(0.3f, 0.3f, 0.3f) *2.0f);
 	PlanetPos.push_back(vector3(8.0f, 0.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(3.0f);
+	PlanetRadius.push_back(.3);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[3])  * Planetscales[2]);
 	//planet 4
 	mars = new Model();
@@ -55,6 +67,9 @@ void Application::InitVariables(void)
 	Planetscales.push_back(glm::scale(0.2f, 0.2f, 0.2f)*2.0f);
 	PlanetPos.push_back(vector3(12.0f, 0.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(5.0f);
+	PlanetRadius.push_back(.2);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[4])  * Planetscales[3]);
 	//planet 5
 	saturn = new Model();
@@ -63,6 +78,9 @@ void Application::InitVariables(void)
 	Planetscales.push_back(glm::scale(2.5f, 2.5f, 2.5f)*2.0f);
 	PlanetPos.push_back(vector3(16.0f, 0.0f, 0.0f));
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(8.0f);
+	PlanetRadius.push_back(2.5);
 	Planetmodelmatricies.push_back(glm::translate(PlanetPos[5]) * Planetscales[4]);
 }
 void Application::Update(void)
@@ -71,30 +89,44 @@ void Application::Update(void)
 	m_pSystem->Update();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		PlanetVel[0].x += .01f;
+		PlanetForce[0].x += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		PlanetVel[0].x -= .01f;
+		PlanetForce[0].x -= .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		PlanetVel[0].y -= .01f;
+		PlanetForce[0].y -= .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		PlanetVel[0].y += .01f;
+		PlanetForce[0].y += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0))
 	{
-		PlanetVel[0].z += .01f;
+		PlanetForce[0].z += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
 	{
-		PlanetVel[0].z -= .01f;
+		PlanetForce[0].z -= .01f;
 	}
+	
 
-	Planetmodelmatricies[0] *= glm::translate(PlanetVel[0]);
+	for (int i = 1; i < Planets.size(); i++)
+	{
+		//float magdist = std::powf(std::powf(PlanetPos[i].y - PlanetPos[0].y, 2)+ std::powf(PlanetPos[i].x - PlanetPos[0].x, 2)+ std::powf(PlanetPos[i].z - PlanetPos[0].z, 2), .5);
+		if (PlanetPos[i].x != PlanetPos[0].x) {
+			PlanetForce[i].x += (.00006*(PlanetMass[i]*PlanetMass[0] /(PlanetPos[i].x + PlanetPos[0].x)));
+		}
+		if (PlanetPos[i].y != PlanetPos[0].y) {
+			PlanetForce[i].y += (.00006*(PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].y + PlanetPos[0].y)));
+		}
+		//if (PlanetPos[i].z != PlanetPos[0].z) {
+		//	PlanetForce[i].z -= (.0006*(PlanetMass[i] * PlanetMass[0] /( PlanetPos[i].z - PlanetPos[0].z)));
+		//}
+		
+	}
 
 	//Is the ArcBall active?
 	ArcBall();
@@ -104,8 +136,12 @@ void Application::Update(void)
 	
 	for(int i=0;i<Planets.size();i++)
 	{
+		PlanetVel[i] = vector3(0, 0, 0);
+		PlanetVel[i] += PlanetForce[i] / PlanetMass[i];
+		PlanetPos[i] += PlanetVel[i];
+		Planetmodelmatricies[i] *= glm::translate(PlanetVel[i]);
 		Planets[i]->SetModelMatrix(Planetmodelmatricies[i]);
-		m_pMeshMngr->AddAxisToRenderList(Planetmodelmatricies[i]);
+		//m_pMeshMngr->AddAxisToRenderList(Planetmodelmatricies[i]);
 		Planets[i]->AddToRenderList();
 	}
 

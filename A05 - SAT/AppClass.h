@@ -12,6 +12,8 @@ Date: 2017/06
 #include <vector>
 #include "MyRigidBody.h"
 #include<ctime>
+#include<cmath>
+//#include<system>
 namespace Simplex
 {
 	//Adding Application to the Simplex namespace
@@ -32,6 +34,9 @@ public:
 	quaternion m_qCreeper; //quaternion for the creeper
 	std::vector<vector3> PlanetPos;
 	std::vector<vector3> PlanetVel;
+	std::vector<vector3> PlanetForce;
+	std::vector<float> PlanetMass;
+	std::vector<float> PlanetRadius;
 	std::vector<Model*> Planets;
 	std::vector<matrix4> Planetscales;
 	std::vector<matrix4> Planetmodelmatricies;
