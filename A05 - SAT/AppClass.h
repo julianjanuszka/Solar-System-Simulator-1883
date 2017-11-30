@@ -13,6 +13,7 @@ Date: 2017/06
 #include "MyRigidBody.h"
 #include<ctime>
 #include<cmath>
+#include  <cstdlib>
 //#include<system>
 namespace Simplex
 {
@@ -157,6 +158,8 @@ private:
 	OUTPUT: ---
 	*/
 	void Release(void);
+
+	void spawnplanet(void);
 #pragma endregion
 
 #pragma region Main Loop
