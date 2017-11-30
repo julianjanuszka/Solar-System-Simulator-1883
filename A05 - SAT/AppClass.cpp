@@ -31,57 +31,57 @@ void Application::InitVariables(void)
 	jupiter = new Model();
 	jupiter->Load("Planets\\05_Jupiter.obj");
 	Planets.push_back(jupiter);
-	Planetscales.push_back(glm::scale(3.0f, 3.0f, 3.0f) * 2.0f);
-	PlanetPos.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	Planetscales.push_back(glm::scale(1.0f, 1.0f, 1.0f) * 2.0f);
+	PlanetPos.push_back(vector3(-1.0f, 0.0f, 0.0f));
+	PlanetVel.push_back(vector3(0.1f, 0.0f, 0.0f));
 	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
 	PlanetMass.push_back(7.0f);
 	PlanetRadius.push_back(3);
-	Planetmodelmatricies.push_back(glm::translate(PlanetPos[1])  * Planetscales[0]);
+	Planetmodelmatricies.push_back(glm::translate(PlanetPos[1])  * Planetscales[1]);
 	//planet 2
-	mercury = new Model();
-	mercury->Load("Planets\\01_Mercury.obj");
-	Planets.push_back(mercury);
-	Planetscales.push_back(glm::scale(0.5f, 0.5f, 0.5f) * 2.0f);
-	PlanetPos.push_back(vector3(4.0f, 0.0f, 0.0f));
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(2.0f);
-	PlanetRadius.push_back(.5);
-	Planetmodelmatricies.push_back(glm::translate(PlanetPos[2])  * Planetscales[1]);
-	//planet 3
-	earth = new Model();
-	earth->Load("Planets\\03_Earth.obj");
-	Planets.push_back(earth);
-	Planetscales.push_back(glm::scale(0.3f, 0.3f, 0.3f) *2.0f);
-	PlanetPos.push_back(vector3(8.0f, 0.0f, 0.0f));
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(3.0f);
-	PlanetRadius.push_back(.3);
-	Planetmodelmatricies.push_back(glm::translate(PlanetPos[3])  * Planetscales[2]);
-	//planet 4
-	mars = new Model();
-	mars->Load("Planets\\04_Mars.obj");
-	Planets.push_back(mars);
-	Planetscales.push_back(glm::scale(0.2f, 0.2f, 0.2f)*2.0f);
-	PlanetPos.push_back(vector3(12.0f, 0.0f, 0.0f));
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(5.0f);
-	PlanetRadius.push_back(.2);
-	Planetmodelmatricies.push_back(glm::translate(PlanetPos[4])  * Planetscales[3]);
-	//planet 5
-	saturn = new Model();
-	saturn->Load("Planets\\06_Saturn.obj");
-	Planets.push_back(saturn);
-	Planetscales.push_back(glm::scale(2.5f, 2.5f, 2.5f)*2.0f);
-	PlanetPos.push_back(vector3(16.0f, 0.0f, 0.0f));
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(8.0f);
-	PlanetRadius.push_back(2.5);
-	Planetmodelmatricies.push_back(glm::translate(PlanetPos[5]) * Planetscales[4]);
+	//mercury = new Model();
+	//mercury->Load("Planets\\01_Mercury.obj");
+	//Planets.push_back(mercury);
+	//Planetscales.push_back(glm::scale(0.5f, 0.5f, 0.5f) * 2.0f);
+	//PlanetPos.push_back(vector3(4.0f, 0.0f, 0.0f));
+	//PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetMass.push_back(2.0f);
+	//PlanetRadius.push_back(.5);
+	//Planetmodelmatricies.push_back(glm::translate(PlanetPos[2])  * Planetscales[2]);
+	////planet 3
+	//earth = new Model();
+	//earth->Load("Planets\\03_Earth.obj");
+	//Planets.push_back(earth);
+	//Planetscales.push_back(glm::scale(0.3f, 0.3f, 0.3f) *2.0f);
+	//PlanetPos.push_back(vector3(8.0f, 0.0f, 0.0f));
+	//PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetMass.push_back(3.0f);
+	//PlanetRadius.push_back(.3);
+	//Planetmodelmatricies.push_back(glm::translate(PlanetPos[3])  * Planetscales[3]);
+	////planet 4
+	//mars = new Model();
+	//mars->Load("Planets\\04_Mars.obj");
+	//Planets.push_back(mars);
+	//Planetscales.push_back(glm::scale(0.2f, 0.2f, 0.2f)*2.0f);
+	//PlanetPos.push_back(vector3(12.0f, 0.0f, 0.0f));
+	//PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetMass.push_back(5.0f);
+	//PlanetRadius.push_back(.2);
+	//Planetmodelmatricies.push_back(glm::translate(PlanetPos[4])  * Planetscales[4]);
+	////planet 5
+	//saturn = new Model();
+	//saturn->Load("Planets\\06_Saturn.obj");
+	//Planets.push_back(saturn);
+	//Planetscales.push_back(glm::scale(2.5f, 2.5f, 2.5f)*2.0f);
+	//PlanetPos.push_back(vector3(16.0f, 0.0f, 0.0f));
+	//PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	//PlanetMass.push_back(8.0f);
+	//PlanetRadius.push_back(2.5);
+	//Planetmodelmatricies.push_back(glm::translate(PlanetPos[5]) * Planetscales[5]);
 }
 void Application::Update(void)
 {
@@ -111,20 +111,57 @@ void Application::Update(void)
 	{
 		PlanetForce[0].z -= .01f;
 	}
-	
+	PlanetVel[0] = vector3(0, 0, 0);
+	PlanetVel[0] += PlanetForce[0] / PlanetMass[0];
+	PlanetPos[0] += PlanetVel[0];
+	Planetmodelmatricies[0] *= glm::translate(PlanetVel[0]);
+	Planets[0]->SetModelMatrix(Planetmodelmatricies[0]);
+	//m_pMeshMngr->AddAxisToRenderList(Planetmodelmatricies[i]);
+	Planets[0]->AddToRenderList();
 
 	for (int i = 1; i < Planets.size(); i++)
 	{
-		//float magdist = std::powf(std::powf(PlanetPos[i].y - PlanetPos[0].y, 2)+ std::powf(PlanetPos[i].x - PlanetPos[0].x, 2)+ std::powf(PlanetPos[i].z - PlanetPos[0].z, 2), .5);
+		float magdist = std::powf(std::powf(PlanetPos[i].y - PlanetPos[0].y, 2)+ std::powf(PlanetPos[i].x - PlanetPos[0].x, 2)+ std::powf(PlanetPos[i].z - PlanetPos[0].z, 2), .5);
 		if (PlanetPos[i].x != PlanetPos[0].x) {
-			PlanetForce[i].x += (.00006*(PlanetMass[i]*PlanetMass[0] /(PlanetPos[i].x + PlanetPos[0].x)));
+			PlanetForce[i].x -= (.006*PlanetMass[i]*PlanetMass[0] /(PlanetPos[i].x - PlanetPos[0].x));
 		}
 		if (PlanetPos[i].y != PlanetPos[0].y) {
-			PlanetForce[i].y += (.00006*(PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].y + PlanetPos[0].y)));
+			PlanetForce[i].y -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].y - PlanetPos[0].y));
 		}
 		//if (PlanetPos[i].z != PlanetPos[0].z) {
 		//	PlanetForce[i].z -= (.0006*(PlanetMass[i] * PlanetMass[0] /( PlanetPos[i].z - PlanetPos[0].z)));
 		//}
+		if (PlanetForce[i].x > .1) {
+			PlanetForce[i].x = .1;
+		}
+		else if (PlanetForce[i].x < -.1) {
+			PlanetForce[i].x = -.1;
+		}
+		if (PlanetForce[i].y > .1) {
+			PlanetForce[i].y = .1;
+		}
+		else if (PlanetForce[i].y < -.1) {
+			PlanetForce[i].y = -.1;
+		}
+		//if (PlanetForce[i].z > 3) {
+		//	PlanetForce[i].z = 3;
+		//}
+		//else if (PlanetForce[i].z < -3) {
+		//	PlanetForce[i].z = -3;
+		//}
+		
+		if (PlanetVel[i].x > .5) {
+			PlanetVel[i].x = .5;
+		}
+		else if (PlanetVel[i].x < -.5) {
+			PlanetVel[i].x = -.5;
+		}
+		if (PlanetVel[i].y > .5) {
+			PlanetVel[i].y = .5;
+		}
+		else if (PlanetVel[i].y < -.5) {
+			PlanetVel[i].y = -.5;
+		}
 		
 	}
 
@@ -134,10 +171,11 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 	
-	for(int i=0;i<Planets.size();i++)
+	for(int i=1;i<Planets.size();i++)
 	{
-		PlanetVel[i] = vector3(0, 0, 0);
+		//PlanetVel[i] = vector3(0, 0, 0);
 		PlanetVel[i] += PlanetForce[i] / PlanetMass[i];
+		PlanetForce[i] = vector3(0, 0, 0);
 		PlanetPos[i] += PlanetVel[i];
 		Planetmodelmatricies[i] *= glm::translate(PlanetVel[i]);
 		Planets[i]->SetModelMatrix(Planetmodelmatricies[i]);
