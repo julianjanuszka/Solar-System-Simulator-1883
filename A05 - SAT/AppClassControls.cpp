@@ -111,30 +111,42 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 		bFPSControl = !bFPSControl;
 		m_pCameraMngr->SetFPS(bFPSControl);
 		break;
+	case sf::Keyboard::PageUp:
+		//updates id of octant to display
+		++m_uOctantID;
+		if (m_uOctantID >= m_pRoot->GetLeafCount())
+			m_uOctantID = -1;
+
+		break;
+	case sf::Keyboard::PageDown:
+		//updates id of octant to display
+		--m_uOctantID;
+		if (m_uOctantID < -1)
+			m_uOctantID = -1;
+
+		break;
 	case sf::Keyboard::Add:
-		++m_uActCont;
-		m_uActCont %= 8;
-		if (m_uControllerCount > 0)
+		//check and add more octant layers
+		if (m_uOctantLevels < 4)
 		{
-			while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
-			{
-				++m_uActCont;
-				m_uActCont %= 8;
-			}
+			m_pEntityMngr->ClearDimensionSetAll();
+
+			//re-create the octree
+			SafeDelete(m_pRoot);
+			++m_uOctantLevels;
+			m_pRoot = new MyOctant(m_uOctantLevels, 5);
 		}
 		break;
 	case sf::Keyboard::Subtract:
-		--m_uActCont;
-		if (m_uActCont > 7)
-			m_uActCont = 7;
-		if (m_uControllerCount > 0)
+		//check and subtract layer
+		if (m_uOctantLevels > 0)
 		{
-			while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
-			{
-				--m_uActCont;
-				if (m_uActCont > 7)
-					m_uActCont = 7;
-			}
+			m_pEntityMngr->ClearDimensionSetAll();
+
+			//re-create octree
+			SafeDelete(m_pRoot);
+			--m_uOctantLevels;
+			m_pRoot = new MyOctant(m_uOctantLevels, 5);
 		}
 		break;
 	case sf::Keyboard::LShift:

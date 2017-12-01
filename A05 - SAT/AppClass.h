@@ -11,6 +11,7 @@ Date: 2017/06
 #include "imgui\ImGuiObject.h"
 #include <vector>
 #include "MyRigidBody.h"
+#include "MyOctant.h"
 #include<ctime>
 #include<cmath>
 #include  <cstdlib>
@@ -20,7 +21,13 @@ namespace Simplex
 	//Adding Application to the Simplex namespace
 class Application
 {
-public:
+
+	MyEntityManager* m_pEntityMngr = nullptr; //Entity Manager
+	int m_uOctantID = -1; //Index of Octant to display
+	uint m_uObjects = 0; //Number of objects in the scene
+	uint m_uOctantLevels = 0; //Number of levels in the octree
+	MyOctant* m_pRoot = nullptr;
+
 	Model* Sun = nullptr;
 	Model* jupiter = nullptr;
 	Model* mercury = nullptr;

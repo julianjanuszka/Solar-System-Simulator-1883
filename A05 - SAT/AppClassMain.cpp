@@ -253,6 +253,7 @@ void Application::Init(String a_sApplicationName, uint a_uWidth, uint a_uHeight,
 
 	//Init controllers
 	InitControllers();
+	m_pEntityMngr = MyEntityManager::GetInstance();
 
 	//Init variables
 	InitVariables();
