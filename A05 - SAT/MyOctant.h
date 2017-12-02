@@ -125,9 +125,14 @@ public:
 	bool IsColliding(uint a_uRBIndex);
 
 	/*
-	USAGE: Displays the MyOctant volume specified by index including the objects underneath
+	USAGE: 
+	
+	
+	
+	s the MyOctant volume specified by index including the objects underneath
 	ARGUMENTS:
-	- int a_nIndex -> MyOctant to be displayed.
+	- int a_nIndex -> MyOctant to be 
+	ed.
 	- vector3 a_v3Color = REYELLOW -> Color of the volume to display.
 	OUTPUT: ---
 	*/

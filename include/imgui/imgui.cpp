@@ -20,7 +20,12 @@
  - FREQUENTLY ASKED QUESTIONS (FAQ), TIPS
    - How can I help?
    - How do I update to a newer version of ImGui?
-   - What is ImTextureID and how do I display an image?
+   - What is ImTextureID and how do I 
+   
+   
+   
+   
+   an image?
    - I integrated ImGui in my engine and the text or lines are blurry..
    - I integrated ImGui in my engine and some elements are clipping or disappearing when I move windows around..
    - How can I have multiple widgets with the same label? Can I have widget without a label? (Yes). A primer on the purpose of labels/IDs.

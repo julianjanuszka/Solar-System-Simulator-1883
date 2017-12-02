@@ -206,6 +206,7 @@ void Simplex::MyOctant::Display(uint a_uIndex, vector3 a_v3Color)
 {
 	if (a_uIndex >= m_uOctantCount) 
 	{
+		
 		DisplayAll();
 		return;
 	}

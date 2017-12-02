@@ -4,9 +4,9 @@ using namespace Simplex;
 void MyRigidBody::Init(void)
 {
 	m_pMeshMngr = MeshManager::GetInstance();
-	m_bVisibleBS = false;
+	m_bVisibleBS = true;
 	m_bVisibleOBB = true;
-	m_bVisibleARBB = false;
+	m_bVisibleARBB = true;
 
 	m_fRadius = 0.0f;
 
@@ -123,6 +123,10 @@ void MyRigidBody::SetModelMatrix(matrix4 a_m4ModelMatrix)
 
 	//we calculate the distance between min and max vectors
 	m_v3ARBBSize = m_v3MaxG - m_v3MinG;
+}
+int Simplex::MyRigidBody::GetcollidingSetSize()
+{
+	return m_CollidingRBSet.size();
 }
 //The big 3
 MyRigidBody::MyRigidBody(std::vector<vector3> a_pointList)
@@ -253,24 +257,30 @@ void MyRigidBody::AddToRenderList(void)
 {
 	if (m_bVisibleBS)
 	{
-		if (m_CollidingRBSet.size() > 0)
-			m_pMeshMngr->AddWireSphereToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(vector3(m_fRadius)), C_BLUE_CORNFLOWER);
-		else
-			m_pMeshMngr->AddWireSphereToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(vector3(m_fRadius)), C_BLUE_CORNFLOWER);
+		if (m_CollidingRBSet.size() > 0) {
+			m_pMeshMngr->AddWireSphereToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(vector3(m_fRadius)), m_v3ColorColliding);
+		}
+		else {
+			m_pMeshMngr->AddWireSphereToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(vector3(m_fRadius)), m_v3ColorNotColliding);
+		}
 	}
 	if (m_bVisibleOBB)
 	{
-		if (m_CollidingRBSet.size() > 0)
+		if (m_CollidingRBSet.size() > 0) {
 			m_pMeshMngr->AddWireCubeToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(m_v3HalfWidth * 2.0f), m_v3ColorColliding);
-		else
-			m_pMeshMngr->AddWireCubeToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(m_v3HalfWidth * 2.0f), m_v3ColorNotColliding);
+		}
+		else {
+		m_pMeshMngr->AddWireCubeToRenderList(glm::translate(m_m4ToWorld, m_v3Center) * glm::scale(m_v3HalfWidth * 2.0f), m_v3ColorNotColliding);
+	}
 	}
 	if (m_bVisibleARBB)
 	{
-		if (m_CollidingRBSet.size() > 0)
+		if (m_CollidingRBSet.size() > 0) {
 			m_pMeshMngr->AddWireCubeToRenderList(glm::translate(GetCenterGlobal()) * glm::scale(m_v3ARBBSize), C_YELLOW);
-		else
+		}
+		else {
 			m_pMeshMngr->AddWireCubeToRenderList(glm::translate(GetCenterGlobal()) * glm::scale(m_v3ARBBSize), C_YELLOW);
+		}
 	}
 }
 

@@ -21,11 +21,11 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Planets\\00_Sun.obj");
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
 	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(rand() % 11);
-	PlanetRadius.push_back(1);
-	vector3 v3Position = vector3(5,5,5);
+	PlanetMass.push_back(15);
+	PlanetRadius.push_back(5);
+	vector3 v3Position = vector3(0,0,0);
 	PlanetPos.push_back(v3Position);
-	matrix4 m4Position = glm::translate(v3Position);
+	matrix4 m4Position = glm::scale(vector3(5,5,5))*glm::translate(v3Position);
 	m_pEntityMngr->SetModelMatrix(m4Position);
 	m_pEntityMngr->Update();
 	//planet spawning
@@ -49,35 +49,57 @@ m_pRoot = new MyOctant(m_uOctantLevels, 5);
 
 void Application::Update(void)
 {
+	
+
 	m_pEntityMngr->ClearDimensionSetAll();
 	//re-create the octree
 	SafeDelete(m_pRoot);
 	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	//Update the system so it knows how much time has passed since the last call
 	m_pSystem->Update();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
+	{
+		for (int i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
+		{
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleARBB(false);
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleBS(false);
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleOBB(false);
+			boxesshowing = false;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+	{
+		for (int i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
+		{
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleARBB(true);
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleBS(true);
+			m_pEntityMngr->GetEntity(i)->GetRigidBody()->SetVisibleOBB(true);
+			boxesshowing = true;
+		}
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		PlanetForce[0].x += .1f;
+		PlanetForce[0].x += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		PlanetForce[0].x -= .1f;
+		PlanetForce[0].x -= .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		PlanetForce[0].y -= .1f;
+		PlanetForce[0].y -= .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		PlanetForce[0].y += .1f;
+		PlanetForce[0].y += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0))
 	{
-		PlanetForce[0].z += .1f;
+		PlanetForce[0].z += .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
 	{
-		PlanetForce[0].z -= .1f;
+		PlanetForce[0].z -= .01f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
 	{
@@ -143,8 +165,33 @@ void Application::Update(void)
 		PlanetForce[i] = vector3(0, 0, 0);
 		PlanetPos[i] += PlanetVel[i];
 		m_pEntityMngr->GetEntity(i)->SetModelMatrix(m_pEntityMngr->GetEntity(i)->GetModelMatrix()*glm::translate(PlanetVel[i]));
-		if (glm::distance(PlanetPos[0], PlanetPos[i])>100) {
-			std::cout << "Planet got too far away" << std::endl;
+		if (glm::distance (PlanetPos[0], PlanetPos[i]) > 250)
+		{
+			m_pEntityMngr->RemoveEntity(i);
+			PlanetVel.erase(PlanetVel.begin() + i);
+			PlanetForce.erase(PlanetForce.begin() + i);
+			PlanetMass.erase(PlanetMass.begin() + i);
+			PlanetPos.erase(PlanetPos.begin() + i);
+			PlanetRadius.erase(PlanetRadius.begin() + i);
+			std::cout << "Something got too far away!" << std::endl;
+		}
+
+		if (m_pEntityMngr->GetEntity(i)->GetRigidBody()->GetcollidingSetSize() > 0) {
+			/*
+			Put Deletion code here
+			*/
+			if (i == 0)
+			{
+				std::cout << "Something Hit the Sun!" << std::endl;
+			}
+			else {
+				m_pEntityMngr->RemoveEntity(i);
+				PlanetVel.erase(PlanetVel.begin() + i);
+				PlanetForce.erase(PlanetForce.begin() + i);
+				PlanetMass.erase(PlanetMass.begin() + i);
+				PlanetPos.erase(PlanetPos.begin() + i);
+				PlanetRadius.erase(PlanetRadius.begin() + i);
+			}
 		}
 		//Planetmodelmatricies[i] *= glm::translate(PlanetVel[i]);
 		//Planets[i]->SetModelMatrix(Planetmodelmatricies[i]);
@@ -161,7 +208,9 @@ void Application::Display(void)
 {
 	// Clear the screen
 	ClearScreen();
-	m_pRoot->Display(m_uOctantID, C_YELLOW);
+	if (boxesshowing) {
+		m_pRoot->Display(m_uOctantID, C_YELLOW);
+	}
 	// draw a skybox
 	m_pMeshMngr->AddSkyboxToRenderList("space3.png");
 	
@@ -237,4 +286,8 @@ void Simplex::Application::spawnplanet(void)
 	matrix4 m4Position = glm::translate(v3Position);
 	m_pEntityMngr->SetModelMatrix(m4Position);
 	m_pEntityMngr->Update();
+
+	m_pEntityMngr->ClearDimensionSetAll();
+
+	
 }

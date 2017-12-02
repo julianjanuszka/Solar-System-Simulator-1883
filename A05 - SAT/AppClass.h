@@ -27,7 +27,7 @@ class Application
 	uint m_uObjects = 0; //Number of objects in the scene
 	uint m_uOctantLevels = 0; //Number of levels in the octree
 	MyOctant* m_pRoot = nullptr;
-
+	bool boxesshowing = true;
 	Model* Sun = nullptr;
 	Model* jupiter = nullptr;
 	Model* mercury = nullptr;

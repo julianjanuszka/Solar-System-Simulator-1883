@@ -53,6 +53,8 @@ class MyRigidBody
 	std::set<MyRigidBody*> m_CollidingRBSet; //set of rigid bodies this one is colliding with
 
 public:
+
+	int GetcollidingSetSize();
 	/*
 	Usage: Constructor
 	Arguments: std::vector<vector3> a_pointList -> list of points to make the Rigid Body for
