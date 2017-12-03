@@ -32,11 +32,8 @@ void Application::InitVariables(void)
 	
 
 	for (int i = 0; i < 2; i++)
-	{ 
-		
-			
+	{ 		
 			spawnplanet();
-	
 	}
 	//for (int i = 0; i < 10; i++) {
 	//	spawnplanet();
@@ -77,10 +74,18 @@ void Application::Update(void)
 			boxesshowing = true;
 		}
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			spawnplanet();
+		}
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		PlanetForce[0].x += .01f;
 	}
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		PlanetForce[0].x -= .01f;
@@ -165,16 +170,16 @@ void Application::Update(void)
 		PlanetForce[i] = vector3(0, 0, 0);
 		PlanetPos[i] += PlanetVel[i];
 		m_pEntityMngr->GetEntity(i)->SetModelMatrix(m_pEntityMngr->GetEntity(i)->GetModelMatrix()*glm::translate(PlanetVel[i]));
-		if (glm::distance (PlanetPos[0], PlanetPos[i]) > 250)
-		{
-			m_pEntityMngr->RemoveEntity(i);
-			PlanetVel.erase(PlanetVel.begin() + i);
-			PlanetForce.erase(PlanetForce.begin() + i);
-			PlanetMass.erase(PlanetMass.begin() + i);
-			PlanetPos.erase(PlanetPos.begin() + i);
-			PlanetRadius.erase(PlanetRadius.begin() + i);
-			std::cout << "Something got too far away!" << std::endl;
-		}
+		//if (glm::distance (PlanetPos[0], PlanetPos[i]) > 250)
+		//{
+		//	m_pEntityMngr->RemoveEntity(i);
+		//	PlanetVel.erase(PlanetVel.begin() + i);
+		//	PlanetForce.erase(PlanetForce.begin() + i);
+		//	PlanetMass.erase(PlanetMass.begin() + i);
+		//	PlanetPos.erase(PlanetPos.begin() + i);
+		//	PlanetRadius.erase(PlanetRadius.begin() + i);
+		//	std::cout << "Something got too far away!" << std::endl;
+		//}
 
 		if (m_pEntityMngr->GetEntity(i)->GetRigidBody()->GetcollidingSetSize() > 0) {
 			/*
