@@ -58,7 +58,7 @@ MyOctant::MyOctant(vector3 a_v3Center, vector3 a_v3Size)
 	m_v3Min = a_v3Center - m_v3Size / 2.f;
 }
 
-//copy cunstructor
+//copy cuntsructor
 MyOctant::MyOctant(MyOctant const & other)
 {
 	Init();

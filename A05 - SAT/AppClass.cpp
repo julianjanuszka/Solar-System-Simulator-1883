@@ -18,7 +18,7 @@ void Application::InitVariables(void)
 	uint uInstances = 200;
 	// planet 0
 	
-	m_pEntityMngr->AddEntity("Planets\\00_Sun.obj");
+	m_pEntityMngr->AddEntity("Planets\\00_Sun.obj"); 
 	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
 	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
 	PlanetMass.push_back(15);
@@ -217,7 +217,7 @@ void Application::Display(void)
 		m_pRoot->Display(m_uOctantID, C_YELLOW);
 	}
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList("space3.png");
+	m_pMeshMngr->AddSkyboxToRenderList("space.png");
 	
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();

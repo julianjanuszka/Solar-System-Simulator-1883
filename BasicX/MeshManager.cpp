@@ -356,7 +356,7 @@ void MeshManager::AddSkyboxToRenderList(String a_sFileName)
 	if (a_sFileName == "")
 		return;
 
-	String sName = "Skybox_" + a_sFileName;
+	String sName = a_sFileName;
 	int nMeshIndex = GetMeshIndex(sName);
 	/*
 	if the mesh does not exist we will need to generate a new instance
