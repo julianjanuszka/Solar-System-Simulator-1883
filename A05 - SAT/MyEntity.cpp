@@ -57,6 +57,14 @@ void Simplex::MyEntity::Release(void)
 	SafeDelete(m_pRigidBody);
 	m_IDMap.erase(m_sUniqueID);
 }
+bool Simplex::MyEntity::getIsPlanet()
+{
+	return isPlanet;
+}
+void Simplex::MyEntity::setIsPlanet(bool a)
+{
+	isPlanet = a;
+}
 //The big 3
 Simplex::MyEntity::MyEntity(String a_sFileName, String a_sUniqueID)
 {

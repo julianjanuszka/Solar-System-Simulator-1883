@@ -12,7 +12,7 @@ namespace Simplex
 
 //System Class
 class MyEntity
-{
+{bool isPlanet = true;
 	bool m_bInMemory = false; //loaded flag
 	bool m_bSetAxis = false; //render axis flag
 	String m_sUniqueID = ""; //Unique identifier name
@@ -22,13 +22,17 @@ class MyEntity
 
 	Model* m_pModel = nullptr; //Model associated with this MyEntity
 	MyRigidBody* m_pRigidBody = nullptr; //Rigid Body associated with this MyEntity
-
+	
 	matrix4 m_m4ToWorld = IDENTITY_M4; //Model matrix associated with this MyEntity
 	MeshManager* m_pMeshMngr = nullptr; //For rendering shapes
 
 	static std::map<String, MyEntity*> m_IDMap; //a map of the unique ID's
 
 public:
+
+	bool getIsPlanet();
+
+	void setIsPlanet(bool a);
 	/*
 	Usage: Constructor that specifies the name attached to the MyEntity
 	Arguments:

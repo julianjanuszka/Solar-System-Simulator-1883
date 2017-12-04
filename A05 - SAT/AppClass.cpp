@@ -30,6 +30,17 @@ void Application::InitVariables(void)
 	m_pEntityMngr->Update();
 	//planet spawning
 	
+	m_pEntityMngr->AddEntity("Planets\\00_Sun.obj");
+	m_pEntityMngr->GetEntity(m_pEntityMngr->GetEntityCount() - 1)->setIsPlanet(false);
+	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(15);
+	PlanetRadius.push_back(5);
+	vector3 v3Position2 = vector3(5, 5, 5);
+	PlanetPos.push_back(v3Position2);
+	matrix4 m4Position2 = glm::scale(vector3(5, 5, 5))*glm::translate(v3Position2);
+	m_pEntityMngr->SetModelMatrix(m4Position2);
+	m_pEntityMngr->Update();
 
 	for (int i = 0; i < 2; i++)
 	{ 		
@@ -128,50 +139,52 @@ void Application::Update(void)
 	m_pLightMngr->SetPosition(vector3(PlanetPos[0].x, PlanetPos[0].y, PlanetPos[0].z), 1);
 	for (int i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
 	{
-		if (PlanetPos[i].x != PlanetPos[0].x) {
-			PlanetForce[i].x -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].x - PlanetPos[0].x)*2);
-		}
-		if (PlanetPos[i].y != PlanetPos[0].y) {
-			PlanetForce[i].y -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].y - PlanetPos[0].y)*2);
-		}
-		if (PlanetPos[i].z != PlanetPos[0].z) {
-			PlanetForce[i].z -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].z - PlanetPos[0].z)*2);
-		}
-		if (PlanetForce[i].x > .5) {
-			PlanetForce[i].x = .5;
-		}
-		else if (PlanetForce[i].x < -.5) {
-			PlanetForce[i].x = -.5;
-		}
-		if (PlanetForce[i].y > .5) {
-			PlanetForce[i].y = .5;
-		}
-		else if (PlanetForce[i].y < -.5) {
-			PlanetForce[i].y = -.5;
-		}
-		if (PlanetForce[i].z > .5) {
-			PlanetForce[i].z = .5;
-		}
-		else if (PlanetForce[i].z < -.5) {
-			PlanetForce[i].z = -.5;
-		}
-		if (PlanetVel[i].x > 1.5) {
-			PlanetVel[i].x = 1.5;
-		}
-		else if (PlanetVel[i].x < -1.5) {
-			PlanetVel[i].x = -1.5;
-		}
-		if (PlanetVel[i].y > 1.5) {
-			PlanetVel[i].y = 1.5;
-		}
-		else if (PlanetVel[i].y < -1.5) {
-			PlanetVel[i].y = -1.5;
-		}
-		if (PlanetVel[i].z > 1.5) {
-			PlanetVel[i].z = 1.5;
-		}
-		else if (PlanetVel[i].z < -1.5) {
-			PlanetVel[i].z = -1.5;
+		if (m_pEntityMngr->GetEntity(i)->getIsPlanet()) {
+			if (PlanetPos[i].x != PlanetPos[0].x) {
+				PlanetForce[i].x -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].x - PlanetPos[0].x) * 2);
+			}
+			if (PlanetPos[i].y != PlanetPos[0].y) {
+				PlanetForce[i].y -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].y - PlanetPos[0].y) * 2);
+			}
+			if (PlanetPos[i].z != PlanetPos[0].z) {
+				PlanetForce[i].z -= (.006*PlanetMass[i] * PlanetMass[0] / (PlanetPos[i].z - PlanetPos[0].z) * 2);
+			}
+			if (PlanetForce[i].x > .5) {
+				PlanetForce[i].x = .5;
+			}
+			else if (PlanetForce[i].x < -.5) {
+				PlanetForce[i].x = -.5;
+			}
+			if (PlanetForce[i].y > .5) {
+				PlanetForce[i].y = .5;
+			}
+			else if (PlanetForce[i].y < -.5) {
+				PlanetForce[i].y = -.5;
+			}
+			if (PlanetForce[i].z > .5) {
+				PlanetForce[i].z = .5;
+			}
+			else if (PlanetForce[i].z < -.5) {
+				PlanetForce[i].z = -.5;
+			}
+			if (PlanetVel[i].x > 1.5) {
+				PlanetVel[i].x = 1.5;
+			}
+			else if (PlanetVel[i].x < -1.5) {
+				PlanetVel[i].x = -1.5;
+			}
+			if (PlanetVel[i].y > 1.5) {
+				PlanetVel[i].y = 1.5;
+			}
+			else if (PlanetVel[i].y < -1.5) {
+				PlanetVel[i].y = -1.5;
+			}
+			if (PlanetVel[i].z > 1.5) {
+				PlanetVel[i].z = 1.5;
+			}
+			else if (PlanetVel[i].z < -1.5) {
+				PlanetVel[i].z = -1.5;
+			}
 		}
 	}
 	//Is the ArcBall active?
