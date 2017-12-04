@@ -74,6 +74,21 @@ void Application::Update(void)
 			boxesshowing = true;
 		}
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+	{
+		for (int i = 1; i < m_pEntityMngr->GetEntityCount(); i++)
+		{
+			m_pEntityMngr->RemoveEntity(i);
+			PlanetVel.erase(PlanetVel.begin() + i);
+			PlanetForce.erase(PlanetForce.begin() + i);
+			PlanetMass.erase(PlanetMass.begin() + i);
+			PlanetPos.erase(PlanetPos.begin() + i);
+			PlanetRadius.erase(PlanetRadius.begin() + i);
+			m_pEntityMngr->ClearDimensionSetAll();
+			SafeDelete(m_pRoot);
+			m_pRoot = new MyOctant(m_uOctantLevels, 5);
+		}
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		for (int i = 0; i < 100; i++)
@@ -196,6 +211,9 @@ void Application::Update(void)
 				PlanetMass.erase(PlanetMass.begin() + i);
 				PlanetPos.erase(PlanetPos.begin() + i);
 				PlanetRadius.erase(PlanetRadius.begin() + i);
+				m_pEntityMngr->ClearDimensionSetAll();
+				SafeDelete(m_pRoot);
+				m_pRoot = new MyOctant(m_uOctantLevels, 5);
 			}
 		}
 		//Planetmodelmatricies[i] *= glm::translate(PlanetVel[i]);
