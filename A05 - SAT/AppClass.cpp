@@ -30,17 +30,7 @@ void Application::InitVariables(void)
 	m_pEntityMngr->Update();
 	//planet spawning
 	
-	m_pEntityMngr->AddEntity("Planets\\00_Sun.obj");
-	m_pEntityMngr->GetEntity(m_pEntityMngr->GetEntityCount() - 1)->setIsPlanet(false);
-	PlanetVel.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
-	PlanetMass.push_back(15);
-	PlanetRadius.push_back(5);
-	vector3 v3Position2 = vector3(5, 5, 5);
-	PlanetPos.push_back(v3Position2);
-	matrix4 m4Position2 = glm::scale(vector3(5, 5, 5))*glm::translate(v3Position2);
-	m_pEntityMngr->SetModelMatrix(m4Position2);
-	m_pEntityMngr->Update();
+	
 
 	for (int i = 0; i < 2; i++)
 	{ 		
@@ -58,7 +48,7 @@ m_pRoot = new MyOctant(m_uOctantLevels, 5);
 void Application::Update(void)
 {
 	
-
+	
 	m_pEntityMngr->ClearDimensionSetAll();
 	//re-create the octree
 	SafeDelete(m_pRoot);
@@ -134,7 +124,8 @@ void Application::Update(void)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
 	{
-		spawnplanet();
+		//spawnplanet();
+		spawnMeteor();
 	}
 	m_pLightMngr->SetPosition(vector3(PlanetPos[0].x, PlanetPos[0].y, PlanetPos[0].z), 1);
 	for (int i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
@@ -326,4 +317,19 @@ void Simplex::Application::spawnplanet(void)
 	m_pEntityMngr->ClearDimensionSetAll();
 
 	
+}
+
+void Simplex::Application::spawnMeteor(void)
+{
+	m_pEntityMngr->AddEntity("Planets\\03A_Moon.obj");
+	m_pEntityMngr->GetEntity(m_pEntityMngr->GetEntityCount() - 1)->setIsPlanet(false);
+	PlanetVel.push_back(m_pCameraMngr->GetForward());
+	PlanetForce.push_back(vector3(0.0f, 0.0f, 0.0f));
+	PlanetMass.push_back(15);
+	PlanetRadius.push_back(5);
+	vector3 v3Position2 = m_pCameraMngr->GetPosition();
+	PlanetPos.push_back(v3Position2);
+	matrix4 m4Position2 = glm::translate(v3Position2);
+	m_pEntityMngr->SetModelMatrix(m4Position2);
+	m_pEntityMngr->Update();
 }
