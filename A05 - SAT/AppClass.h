@@ -167,6 +167,7 @@ private:
 	void Release(void);
 
 	void spawnplanet(void);
+	void spawnMeteor(void);
 #pragma endregion
 
 #pragma region Main Loop
