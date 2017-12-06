@@ -36,10 +36,10 @@ void Application::DrawGUI(void)
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			ImGui::Text("Control:\n");
 			ImGui::Text("    WASD: Camera Movement\n");
-			ImGui::Text("	 F1: Perspective\n");
-			ImGui::Text("	 F2: Orthographic X\n");
-			ImGui::Text("	 F3: Orthographic Y\n");
-			ImGui::Text("	 F4: Orthographic Z\n");
+			ImGui::Text("	 K: Delete The Universe\n");
+			ImGui::Text("	 Left Click: Shoot Meteor\n");
+			/*ImGui::Text("	 F3: Orthographic Y\n");
+			ImGui::Text("	 F4: Orthographic Z\n");*/
 			ImGui::Separator();
 			ImGui::Text("Arrow Keys, Rctrl, numpad0: Sun Movement\n");
 			ImGui::Text(" Right Shift: Spawn More Planets\n");
