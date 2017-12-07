@@ -28,6 +28,7 @@ class Application
 	uint m_uOctantLevels = 0; //Number of levels in the octree
 	MyOctant* m_pRoot = nullptr;
 	bool boxesshowing = true;
+	bool presentationmode = false;
 	Model* Sun = nullptr;
 	Model* jupiter = nullptr;
 	Model* mercury = nullptr;

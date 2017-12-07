@@ -137,6 +137,16 @@ void Application::Update(void)
 		spawnplanet();
 		
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Dash))
+	{
+		presentationmode = false;
+
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Equal))
+	{
+		presentationmode = true;
+
+	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		spawnMeteor();
 	}
@@ -202,35 +212,37 @@ void Application::Update(void)
 		PlanetForce[i] = vector3(0, 0, 0);
 		PlanetPos[i] += PlanetVel[i];
 		m_pEntityMngr->GetEntity(i)->SetModelMatrix(m_pEntityMngr->GetEntity(i)->GetModelMatrix()*glm::translate(PlanetVel[i]));
-		if (glm::distance (PlanetPos[0], PlanetPos[i]) > 150)
-		{
-			m_pEntityMngr->RemoveEntity(i);
-			PlanetVel.erase(PlanetVel.begin() + i);
-			PlanetForce.erase(PlanetForce.begin() + i);
-			PlanetMass.erase(PlanetMass.begin() + i);
-			PlanetPos.erase(PlanetPos.begin() + i);
-			PlanetRadius.erase(PlanetRadius.begin() + i);
-			std::cout << "Something got too far away!" << std::endl;
-		}
-
-		if (m_pEntityMngr->GetEntity(i)->GetRigidBody()->GetcollidingSetSize() > 0) {
-			/*
-			Put Deletion code here
-			*/
-			if (i == 0)
+		if (presentationmode) {
+			if (glm::distance(PlanetPos[0], PlanetPos[i]) > 150)
 			{
-				std::cout << "Something Hit the Sun!" << std::endl;
-			}
-			else {
 				m_pEntityMngr->RemoveEntity(i);
 				PlanetVel.erase(PlanetVel.begin() + i);
 				PlanetForce.erase(PlanetForce.begin() + i);
 				PlanetMass.erase(PlanetMass.begin() + i);
 				PlanetPos.erase(PlanetPos.begin() + i);
 				PlanetRadius.erase(PlanetRadius.begin() + i);
-				m_pEntityMngr->ClearDimensionSetAll();
-				SafeDelete(m_pRoot);
-				m_pRoot = new MyOctant(m_uOctantLevels, 5);
+				std::cout << "Something got too far away!" << std::endl;
+			}
+
+			if (m_pEntityMngr->GetEntity(i)->GetRigidBody()->GetcollidingSetSize() > 0) {
+				/*
+				Put Deletion code here
+				*/
+				if (i == 0)
+				{
+					std::cout << "Something Hit the Sun!" << std::endl;
+				}
+				else {
+					m_pEntityMngr->RemoveEntity(i);
+					PlanetVel.erase(PlanetVel.begin() + i);
+					PlanetForce.erase(PlanetForce.begin() + i);
+					PlanetMass.erase(PlanetMass.begin() + i);
+					PlanetPos.erase(PlanetPos.begin() + i);
+					PlanetRadius.erase(PlanetRadius.begin() + i);
+					m_pEntityMngr->ClearDimensionSetAll();
+					SafeDelete(m_pRoot);
+					m_pRoot = new MyOctant(m_uOctantLevels, 5);
+				}
 			}
 		}
 		//Planetmodelmatricies[i] *= glm::translate(PlanetVel[i]);
